@@ -1,0 +1,20 @@
+TABLE #1 : Product
+    id          | int
+    description | varchar(255)
+    image       | varchar(255)
+    name        | varchar(255)
+    price       | float
+    quantity    | int
+
+TABLE #2 : User
+    id          | int
+    email       | varchar(255)
+    first_name  | varchar(255)
+    last_name   | varchar(255)
+    password    | varchar(255)
+
+TABLE #3 : Reviews
+    id          | int
+    product_id  | int           | foreign key references the id in Product table
+    user_id     | int           | foreign key references the id in User table
+    review      | varchar(255)
