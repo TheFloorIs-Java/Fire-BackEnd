@@ -1,36 +1,40 @@
 package com.revature.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "reviews")
+@Entity
 @Builder
-public class Review {
+@Table(name="purchases")
+@ToString(exclude = "user")
+public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column
+    private Date date;
+
     @ManyToOne
     @JoinColumn(
-            name= "product_id",
+            name = "product_id",
             referencedColumnName = "id"
     )
-    private Product product  ;
+    private Product product;
+
     @ManyToOne
     @JoinColumn(
-            name= "user_id",
+            name = "user_id",
             referencedColumnName = "id"
     )
-    private  User user;
-    private String review ;
+    private User user;
 
+    private double total_price;
 
-
+    private int quantity;
 }
