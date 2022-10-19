@@ -7,6 +7,7 @@ import com.revature.repositories.ReviewRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -39,6 +40,12 @@ public class ReviewService {
 
         return rr.findAll() ;
 
+    }
+
+    public List<Review> findById(int id) {
+        Product product = new Product();
+        product.setId(id);
+        return rr.findReviewByProduct(product);
     }
 
 }
