@@ -1,16 +1,19 @@
 package com.revature.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+
+
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Product {
 
     @Id
@@ -21,6 +24,5 @@ public class Product {
     private String description;
     private String image;
     private String name;
-
 
 }

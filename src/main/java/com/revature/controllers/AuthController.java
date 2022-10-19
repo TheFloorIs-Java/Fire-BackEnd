@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000", "https://fireshop.azurewebsites.net"}, allowCredentials = "true")
 public class AuthController {
 
     private final AuthService authService;
@@ -23,16 +23,19 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest, HttpSession session) {
+    public User login(@RequestBody LoginRequest loginRequest, HttpSession session) {
         Optional<User> optional = authService.findByCredentials(loginRequest.getEmail(), loginRequest.getPassword());
+        System.out.println(loginRequest.getEmail()+" "+loginRequest.getPassword());
 
         if(!optional.isPresent()) {
-            return ResponseEntity.badRequest().build();
+            //return ResponseEntity.badRequest().build();
+            return null;
         }
-
+        System.out.println(optional.get().getId());
         session.setAttribute("user", optional.get());
-
-        return ResponseEntity.ok(optional.get());
+        System.out.println(session.getAttribute("user").toString()+"00000");
+        //return ResponseEntity.ok(optional.get());
+        return optional.get();
     }
 
     @PostMapping("/logout")
