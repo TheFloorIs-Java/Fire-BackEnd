@@ -32,7 +32,7 @@ public class AuthController {
         }
         System.out.println(optional.get().getId());
         session.setAttribute("user", optional.get());
-
+        System.out.println(session.getAttribute("user").toString()+"00000");
         return ResponseEntity.ok(optional.get());
     }
 
