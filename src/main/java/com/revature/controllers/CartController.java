@@ -31,8 +31,8 @@ public class CartController {
 
     @Authorized
     @PostMapping("/add")
-    public Cart addCartItem(@RequestBody Product product){
-        return cartService.addCartItems(product);
+    public Cart addCartItem(@RequestBody Product product, HttpSession session){
+        return cartService.addCartItems(product, (User) session.getAttribute("user"));
     }
 
     @Authorized
