@@ -1,11 +1,14 @@
 package com.revature.controllers;
 
+import com.revature.annotations.Authorized;
 import com.revature.models.Product;
 import com.revature.models.Review;
+import com.revature.models.User;
 import com.revature.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -18,8 +21,11 @@ public class ReviewController {
         this.rs = rs;
     }
 
+    @Authorized
     @PostMapping("/review")
-    public Review addReview(@RequestBody Review r){
+    public Review addReview(@RequestBody Review r, HttpSession session){
+        User user = (User) session.getAttribute("user");
+        r.setUser(user);
         return rs.save(r);
     }
 
