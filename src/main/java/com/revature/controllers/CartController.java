@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.revature.annotations.Authorized;
 import com.revature.models.Cart;
+import com.revature.models.Product;
 import com.revature.models.User;
 import com.revature.services.CartService;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class CartController {
 
     @Authorized
     @PostMapping("/add")
-    public Cart addCartItem(@RequestBody Cart cart){
-        return cartService.addCartItems(cart);
+    public Cart addCartItem(@RequestBody Product product){
+        return cartService.addCartItems(product);
     }
 
     @Authorized

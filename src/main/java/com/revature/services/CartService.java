@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import com.revature.models.Cart;
+import com.revature.models.Product;
 import com.revature.models.User;
 import com.revature.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,21 @@ public class CartService {
     @Autowired
     CartRepository cartRepository;
 
-    public Cart addCartItems(Cart cart){
-        Optional<Cart> optionalCart = cartRepository.findCartByUserAndAndProduct(cart.getUser(), cart.getProduct());
+    public Cart addCartItems(Product product, User user){
+        Cart cart = Cart.builder()
+                .user(user)
+                .product(product)
+                .quantity(1)
+                .total_price(product.getPrice())
+                .build();
+
+        Optional<Cart> optionalCart = cartRepository.findCartByUserAndAndProduct(user, product);
         if(!optionalCart.isPresent()){
             return cartRepository.save(cart);
         }
         Cart existingCartItem = optionalCart.get();
-        existingCartItem.setQuantity(cart.getQuantity());
-        existingCartItem.setTotal_price(cart.getTotal_price());
+        existingCartItem.setQuantity(existingCartItem.getQuantity() + cart.getQuantity());
+        existingCartItem.setTotal_price(existingCartItem.getTotal_price() + cart.getTotal_price());
         return cartRepository.save(existingCartItem);
     }
 
