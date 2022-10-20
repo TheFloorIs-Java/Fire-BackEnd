@@ -17,14 +17,14 @@ class CartServiceTest {
 
     @Test
     void addCartItem(){
-        Product product = Product.builder().id(2).build();
+        Product product = Product.builder().id(1).build();
         User user = User.builder().id(1).build();
 
         Cart cart = Cart.builder()
                 .product(product)
                 .user(user)
                 .quantity(1)
-                .total_price(45)
+                .total_price(20)
                 .build();
         System.out.println(cartService.addCartItems(cart));
     }
@@ -33,5 +33,21 @@ class CartServiceTest {
     void getCartItems(){
         User user = User.builder().id(1).build();
         System.out.println(cartService.getUserCart(user));
+    }
+
+    @Test
+    void deleteCartItem(){
+        cartService.deleteCartItem(1);
+    }
+
+    @Test
+    void emptyCart(){
+
+        cartService.emptyCart(User.builder().id(1).build());
+    }
+
+    @Test
+    void getCartCount(){
+        System.out.println(cartService.getCartCount(User.builder().id(2).build()));
     }
 }

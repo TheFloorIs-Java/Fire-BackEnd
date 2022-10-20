@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.annotations.Authorized;
 import com.revature.dtos.LoginRequest;
 import com.revature.dtos.RegisterRequest;
 import com.revature.models.User;
@@ -54,5 +55,12 @@ public class AuthController {
                 registerRequest.getLastName());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
+    }
+
+    @Authorized
+    @GetMapping("/user")
+    public User getUser(HttpSession session){
+        User user = (User) session.getAttribute("user");
+        return authService.findByCredentials(user.getEmail(), user.getPassword()).get();
     }
 }
