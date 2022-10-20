@@ -2,6 +2,8 @@ HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
+/src/test/java/
+/src/test/java/com/revature/services/
 
 
 
@@ -28,9 +30,8 @@ target/
 /.nb-gradle/
 build/
 !**/src/main/**/build/
-!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
-/src/test/java/
-/src/test/java/
+
+
