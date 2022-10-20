@@ -21,4 +21,7 @@ public class PurchaseService {
         return purchaseRepository.findPurchaseByUser(user);
     }
 
+    public void deletePurchase(int id){
+        purchaseRepository.deleteById(id);
+    }
 }

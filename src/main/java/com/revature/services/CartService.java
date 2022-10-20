@@ -18,8 +18,8 @@ public class CartService {
         return cartRepository.save(cart);
     }
 
-    public void deleteCartItem(Cart cart){
-        cartRepository.delete(cart);
+    public void deleteCartItem(int id){
+        cartRepository.deleteById(id);
     }
 
     public List<Cart> getUserCart(User user){

@@ -29,8 +29,14 @@ public class CartController {
     }
 
     @Authorized
-    @PostMapping
+    @PostMapping("/add")
     public Cart addCartItem(@RequestBody Cart cart){
         return cartService.addCartItems(cart);
+    }
+
+    @Authorized
+    @DeleteMapping("/{id}")
+    public void deleteCartItem(@PathVariable int id){
+        cartService.deleteCartItem(id);
     }
 }

@@ -31,16 +31,7 @@ class PurchaseServiceTest {
                 .user(user)
                 .quantity(1)
                 .total_price(45)
-                .build();
-        purchases.add(purchase);
-        product = Product.builder().id(1).build();
-        user = User.builder().id(1).build();
-        date = new Date();
-        purchase = Purchase.builder()
-                .product(product)
-                .user(user)
-                .quantity(1)
-                .total_price(20)
+                .date(date)
                 .build();
         purchases.add(purchase);
 
@@ -49,8 +40,15 @@ class PurchaseServiceTest {
     }
 
     @Test
-    void getCartItems(){
+    void purchases(){
         User user = User.builder().id(1).build();
         System.out.println(purchaseService.getPurchase(user));
+    }
+
+    @Test
+    void deletePurchases(){
+        for (int i =1; i< 25;i++){
+            purchaseService.deletePurchase(i);
+        }
     }
 }

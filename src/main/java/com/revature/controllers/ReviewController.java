@@ -1,16 +1,12 @@
 package com.revature.controllers;
 
-import com.revature.annotations.Authorized;
 import com.revature.models.Product;
 import com.revature.models.Review;
 import com.revature.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.stream.events.Comment;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000", "https://fireshop.azurewebsites.net"}, allowCredentials = "true")
@@ -31,7 +27,6 @@ public class ReviewController {
 
     @GetMapping("/review")
     public List<Review> getAllReviews(@RequestBody Product product){
-
         return rs.getAllReviews(product);
     }
 
@@ -39,15 +34,11 @@ public class ReviewController {
 
     @GetMapping("/review/{id}")
     public List<Review> getReviewsById(@PathVariable("id") int id) {
-
-
-
         return rs.findById(id);
     }
 
     @GetMapping("/reviews")
     public List<Review> getAllReview(){
-
         return rs.getAllReview();
     }
 
