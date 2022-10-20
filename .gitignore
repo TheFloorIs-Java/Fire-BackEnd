@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 
 
+
 ### STS ###
 .apt_generated
 .classpath
@@ -18,7 +19,7 @@ target/
 *.iws
 *.iml
 *.ipr
-
+/src/test
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
