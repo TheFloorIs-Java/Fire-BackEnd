@@ -59,7 +59,7 @@ public class AuthController {
 
     @Authorized
     @GetMapping("/user")
-    public User getUser(HttpSession session){
+    public User getUser(HttpSession session) {
         User user = (User) session.getAttribute("user");
         return authService.findByCredentials(user.getEmail(), user.getPassword()).get();
     }
