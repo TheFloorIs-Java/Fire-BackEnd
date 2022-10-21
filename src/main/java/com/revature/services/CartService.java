@@ -36,8 +36,9 @@ public class CartService {
         return cartRepository.save(existingCartItem);
     }
 
-    public void deleteCartItem(int id){
-        cartRepository.deleteById(id);
+    @Transactional
+    public void deleteCartItem(Product product, User user){
+        cartRepository.deleteCartByProductAndUser(product, user);
     }
 
     @Transactional

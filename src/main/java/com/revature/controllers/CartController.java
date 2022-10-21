@@ -37,8 +37,9 @@ public class CartController {
 
     @Authorized
     @DeleteMapping("/{id}")
-    public void deleteCartItem(@PathVariable int id){
-        cartService.deleteCartItem(id);
+    @Transactional
+    public void deleteCartItem(@RequestBody Product product, HttpSession session){
+        cartService.deleteCartItem(product, (User) session.getAttribute("user"));
     }
 
     @Authorized
