@@ -54,4 +54,10 @@ public class CartController {
     public int getCartCount(HttpSession session){
         return cartService.getCartCount((User) session.getAttribute("user"));
     }
+
+    @Authorized
+    @GetMapping("/total")
+    public double getCartTotalPrice(HttpSession session){
+        return cartService.getCartTotalPrice((User) session.getAttribute("user"));
+    }
 }

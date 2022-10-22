@@ -28,4 +28,10 @@ public interface CartRepository extends JpaRepository<Cart, Integer> {
             value = "SELECT sum(c.quantity) FROM cart c WHERE user_id=?1"
     )
     Integer sumQuantity(int user_id);
+
+    @Query(
+            nativeQuery = true,
+            value = "SELECT sum(c.total_price) FROM cart c WHERE user_id=?1"
+    )
+    Double getTotalPrice(int user_id);
 }
