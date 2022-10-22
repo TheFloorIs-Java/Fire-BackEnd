@@ -22,8 +22,8 @@ public class PurchaseController {
 
     @Authorized
     @PostMapping
-    public List<Purchase> addPurchaseItems(@RequestBody List<Purchase> list){
-        return purchaseService.addPurchase(list);
+    public List<Purchase> addPurchaseItems(HttpSession session){
+        return purchaseService.addPurchase((User) session.getAttribute("user"));
     }
 
     @Authorized
