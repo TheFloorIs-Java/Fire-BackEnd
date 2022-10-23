@@ -27,7 +27,8 @@ public class Review {
             referencedColumnName = "id"
     )
     private  User user;
-    private String review ;
+    private String review;
+    private int score;
 
 
 
