@@ -33,19 +33,7 @@ public class ReviewController {
 
     @GetMapping("/review")
     public List<Review> getAllReviews(@RequestBody Product product){
-        return rs.getAllReviews(product);
-    }
-
-
-
-    @GetMapping("/review/{id}")
-    public List<Review> getReviewsById(@PathVariable("id") int id) {
-        return rs.findById(id);
-    }
-
-    @GetMapping("/reviews")
-    public List<Review> getAllReview(){
-        return rs.getAllReview();
+        return rs.findReviewsByProduct(product);
     }
 
 

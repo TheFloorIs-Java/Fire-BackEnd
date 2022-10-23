@@ -30,7 +30,7 @@ public class ReviewService {
 
   //  }
 
-    public List<Review> getAllReviews( Product product) {
+    public List<Review> findReviewsByProduct( Product product) {
 
         return rr.findReviewByProduct(product) ;
 
