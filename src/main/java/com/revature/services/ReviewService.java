@@ -16,19 +16,11 @@ public class ReviewService {
 
     public ReviewService (ReviewRepository rr){
         this.rr = rr;
-
     }
 
     public Review save(Review review) {
         return rr.save(review);
     }
-
-
-   // public List<Review> getAllReviewsByProductId(int id) {
-    //    List<Review> reviews = rr.getReviewsByProductId(id);
-    //    return reviews ;
-
-  //  }
 
     public List<Review> findReviewsByProduct( Product product) {
 

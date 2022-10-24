@@ -29,8 +29,7 @@ public class ReviewController {
         return rs.save(r);
     }
 
-
-
+    @Authorized
     @GetMapping("/review")
     public List<Review> getAllReviews(@RequestBody Product product){
         return rs.findReviewsByProduct(product);
