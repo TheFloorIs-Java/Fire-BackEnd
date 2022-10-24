@@ -33,6 +33,7 @@ public class ReviewController {
 
     @GetMapping("/review")
     public List<Review> getAllReviews(@RequestBody Product product){
+
         return rs.getAllReviews(product);
     }
 
