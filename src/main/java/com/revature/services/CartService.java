@@ -59,4 +59,13 @@ public class CartService {
         }
     }
 
+    public double getCartTotalPrice(User user){
+        try {
+            return cartRepository.getTotalPrice(user.getId());
+        }
+        catch (NullPointerException e){
+            return 0;
+        }
+    }
+
 }

@@ -2,7 +2,6 @@ package com.revature.services;
 
 import com.revature.models.Product;
 import com.revature.models.Review;
-import com.revature.models.User;
 import com.revature.repositories.ReviewRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,16 +19,15 @@ public class ReviewService {
     // define ReviewRepository object as private
     private final ReviewRepository rr;
     /** This  constructor is used to initialize ReviewRepository rr
-     *@return Nothing.
+     * @return Nothing.
      * @param rr This is parameter to ReviewService constructor
      */
     public ReviewService (ReviewRepository rr){
         this.rr = rr;
-
     }
     /**
      * This method is used to save Review object in database
-     * @param review This is the first paramter to Save method
+     * @param review This is the first parameter to Save method
      * @return Review This returns Review object.
      */
     public Review save(Review review) {
@@ -39,11 +37,18 @@ public class ReviewService {
 
 
 
-//    public List<Review> getAllReviews( Product product) {
-//
-//        return rr.findReviewByProduct(product) ;
-//
-//    }
+
+    public List<Review> findReviewsByProduct( Product product) {
+
+        return rr.findReviewByProduct(product) ;
+
+    }
+
+    public List<Review> getAllReviews( Product product) {
+
+        return rr.findReviewByProduct(product) ;
+
+    }
     /**
      * This method is used to get all  reviews from database
      * @return List<Review> This returns  list of Review object.
