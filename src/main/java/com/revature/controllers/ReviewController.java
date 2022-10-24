@@ -30,9 +30,10 @@ public class ReviewController {
     }
 
     @Authorized
-    @GetMapping("/review")
-    public List<Review> getAllReviews(@RequestBody Product product){
-        return rs.findReviewsByProduct(product);
+    @GetMapping("/review/{id}")
+    public List<Review> getAllReviews(@PathVariable int id){
+
+        return rs.findReviewsByProduct(Product.builder().id(id).build());
     }
 
 
