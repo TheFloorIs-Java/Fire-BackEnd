@@ -18,7 +18,11 @@ public class PurchaseService {
 
     @Autowired
     CartService cartService;
-
+    /**
+     * This method is used to add purchase object to the  database
+     * @param user This is the  parameter of addPurchase method
+     * @return List<Purchase> This returns list of purchase objects.
+     */
     public List<Purchase> addPurchase(User user){
         List<Cart> cartList = cartService.getUserCart(user);
         List<Purchase> purchaseList = new ArrayList<>();
@@ -41,11 +45,19 @@ public class PurchaseService {
         }
         return null;
     }
-
+    /**
+     * This method is used to get  purchases from database
+     * @param user This is the  parameter of getPurchase method
+     * @return List<Review> This returns  list of purchase objects.
+     */
     public List<Purchase> getPurchase(User user){
         return purchaseRepository.findPurchaseByUser(user);
     }
-
+    /**
+     * This method is used to delete  purchase object from  database by id
+     * @param id This is the  parameter of deletePurchase method
+     * @return Nothing.
+     */
     public void deletePurchase(int id){
         purchaseRepository.deleteById(id);
     }

@@ -19,15 +19,16 @@ public class ReviewService {
     // define ReviewRepository object as private
     private final ReviewRepository rr;
     /** This  constructor is used to initialize ReviewRepository rr
+     * @param rr This is parameter of ReviewService constructor
      * @return Nothing.
-     * @param rr This is parameter to ReviewService constructor
      */
     public ReviewService (ReviewRepository rr){
         this.rr = rr;
     }
+
     /**
      * This method is used to save Review object in database
-     * @param review This is the first parameter to Save method
+     * @param review This is the  parameter of Save method
      * @return Review This returns Review object.
      */
     public Review save(Review review) {
@@ -36,14 +37,22 @@ public class ReviewService {
 
 
 
-
+    /**
+     * This method is get Review object in database by product
+     * @param product This is the  parameter of findReviewsByProduct method
+     * @return List<Review> This returns array of Review object.
+     */
 
     public List<Review> findReviewsByProduct( Product product) {
 
         return rr.findReviewByProduct(product) ;
 
     }
-
+    /**
+     * This method is get Review object in database by product
+     * @param product This is the  parameter of findReviewsByProduct method
+     * @return List<Review> This returns array of Review object.
+     */
     public List<Review> getAllReviews( Product product) {
 
         return rr.findReviewByProduct(product) ;
@@ -59,7 +68,7 @@ public class ReviewService {
 
     }
     /**
-     * This method is used to get all  reviews from database by product_id
+     * This method is used to get  reviews from database by product_id
      * @param id This is the  parameter to findById method
      * @return List<Review> This returns  list of Review object.
      */

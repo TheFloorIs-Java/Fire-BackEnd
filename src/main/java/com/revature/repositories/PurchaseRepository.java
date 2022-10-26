@@ -8,5 +8,10 @@ import java.util.List;
 
 public interface PurchaseRepository extends JpaRepository<Purchase, Integer> {
 
+    /**
+     * This method is used to get  purchase from database by user
+     * @param user This is the  parameter of findPurchaseByUser method
+     * @return List<Purchase> This returns  list of purchase objects.
+     */
     List<Purchase> findPurchaseByUser(User user);
 }

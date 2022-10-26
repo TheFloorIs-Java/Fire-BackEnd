@@ -21,6 +21,12 @@ public class ReviewController {
         this.rs = rs;
     }
 
+    /**
+     * This method is used to save review  object  to the  database
+     * @param r This is the first parameter to addReview method
+     * @param session This is the second parameter to addReview method
+     * @return Review This returns review  object.
+     */
     @Authorized
     @PostMapping("/review")
     public Review addReview(@RequestBody Review r, HttpSession session){
@@ -29,7 +35,11 @@ public class ReviewController {
         return rs.save(r);
     }
 
-
+    /**
+     * This method is used to get review  objects  from the  database by product
+     * @param product This is the first parameter to getAllReviews method
+     * @return List<Review> This returns  list of review  object.
+     */
     @GetMapping("/review")
     public List<Review> getAllReviews(@RequestBody Product product){
 
@@ -37,7 +47,11 @@ public class ReviewController {
     }
 
 
-
+    /**
+     * This method is used to get review  objects  from the  database by id
+     * @param id This is the  parameter of getAllReviews method
+     * @return List<Review> This returns  list of review  object.
+     */
 
     @Authorized
     @GetMapping("/review/{id}")

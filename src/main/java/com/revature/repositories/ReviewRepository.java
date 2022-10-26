@@ -14,6 +14,11 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     //@Query("from reviews where product_id = :id")
    // public List<Review> getReviewsByProductId(@Param("id") int id);
 
+    /**
+     * This method is used to get  reviews from database by product
+     * @param product This is the  parameter of findReviewByProduct method
+     * @return List<Review> This returns  list of Review objects.
+     */
     List<Review> findReviewByProduct( Product product) ;
 
 

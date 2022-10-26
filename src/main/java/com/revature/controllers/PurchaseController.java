@@ -20,12 +20,22 @@ public class PurchaseController {
         this.purchaseService = purchaseService;
     }
 
+    /**
+     * This method is used to save purchase  objects  to the  database
+     * @param session This is the  parameter of addPurchaseItems method
+     * @return List<Purchase> This returns list of  purchase  objects.
+     */
     @Authorized
     @PostMapping
     public List<Purchase> addPurchaseItems(HttpSession session){
         return purchaseService.addPurchase((User) session.getAttribute("user"));
     }
 
+    /**
+     * This method is used to get purchase objects from the  database
+     * @param session This is the  parameter of getPurchaseItems method
+     * @return List<Purchase> This returns list of  purchase  objects.
+     */
     @Authorized
     @GetMapping
     public List<Purchase> getPurchaseItems(HttpSession session){

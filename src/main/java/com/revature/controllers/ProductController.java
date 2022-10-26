@@ -22,12 +22,21 @@ public class ProductController {
         this.productService = productService;
     }
 
+    /**
+     * This method is used to get Inventory  object from database
+     * @return ResponseEntity<List<Product>> This returns  List of  product  objects.
+     */
     @Authorized
     @GetMapping
     public ResponseEntity<List<Product>> getInventory() {
         return ResponseEntity.ok(productService.findAll());
     }
 
+    /**
+     * This method is used to get product  object from database by id
+     * @param id This is the  parameter of getProductById method
+     * @return ResponseEntity<Product> This returns  product  object.
+     */
     @Authorized
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable("id") int id) {
@@ -39,12 +48,22 @@ public class ProductController {
         return ResponseEntity.ok(optional.get());
     }
 
+    /**
+     * This method is used to save product  object from database
+     * @param product This is the  parameter of upsert method
+     * @return ResponseEntity<Product> This returns  product  object.
+     */
     @Authorized
     @PutMapping
     public ResponseEntity<Product> upsert(@RequestBody Product product) {
         return ResponseEntity.ok(productService.save(product));
     }
 
+    /**
+     * This method is used to save purchase  objects  to the  database
+     * @param metadata This is the  parameter of purchase method
+     * @return ResponseEntity<List<Product>> This returns list of  product  objects.
+     */
     @Authorized
     @PatchMapping
     public ResponseEntity<List<Product>> purchase(@RequestBody List<ProductInfo> metadata) { 	
@@ -72,6 +91,11 @@ public class ProductController {
         return ResponseEntity.ok(productList);
     }
 
+    /**
+     * This method is used to delete  product  object  from   database by id
+     * @param id This is the  parameter of deleteProduct method
+     * @return ResponseEntity<Product> This returns   product  object.
+     */
     @Authorized
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable("id") int id) {

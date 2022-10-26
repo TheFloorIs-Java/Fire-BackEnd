@@ -23,6 +23,12 @@ public class AuthController {
         this.authService = authService;
     }
 
+    /**
+     * This method is used to get user object from  database by loginRequest   (email and password)
+     * @param loginRequest This is the first parameter to login method
+     * @param session This is the second parameter to login method
+     * @return User This returns   user  object.
+     */
     @PostMapping("/login")
     public User login(@RequestBody LoginRequest loginRequest, HttpSession session) {
         Optional<User> optional = authService.findByCredentials(loginRequest.getEmail(), loginRequest.getPassword());
@@ -39,6 +45,11 @@ public class AuthController {
         return optional.get();
     }
 
+    /**
+     * This method is used to log out by remove user from session
+     * @param session This is the  parameter of logout method
+     * @return ResponseEntity<Void> This returns  ResponseEntity  object.
+     */
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(HttpSession session) {
         session.removeAttribute("user");
@@ -46,6 +57,11 @@ public class AuthController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * This method is used to save user object in database
+     * @param registerRequest This is the  parameter of register method
+     * @return ResponseEntity<User> This returns  user  object.
+     */
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody RegisterRequest registerRequest) {
         User created = new User(0,
@@ -57,6 +73,11 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
 
+    /**
+     * This method is used to get user object from database
+     * @param session This is the  parameter of getUser method
+     * @return User This returns  user  object.
+     */
     @Authorized
     @GetMapping("/user")
     public User getUser(HttpSession session) {
