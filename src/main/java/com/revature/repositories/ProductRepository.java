@@ -6,4 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+
+
+    //find all the products in a user's cart
+
+
 }
